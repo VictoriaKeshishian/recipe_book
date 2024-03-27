@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Подробный рецепт - Мой сайт с рецептами{% endblock %}
+
+{% block content %}
+    <h2>{{ recipe.name }}</h2>
+    <p><strong>Описание:</strong> {{ recipe.description }}</p>
+    <p><strong>Шаги приготовления:</strong></p>
+<!--    <ol>-->
+<!--        {% for step in recipe.cooking %}-->
+<!--            <li>{{ step }}</li>-->
+<!--        {% endfor %}-->
+<!--    </ol>-->
+    <ol>
+        {% for step in cooking_steps %}
+            <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
+    <p><strong>Время приготовления:</strong> {{ recipe.time_cooking }}</p>
+    <p><strong>Ингредиенты:</strong> {{ recipe.ingredients }}</p>
+    <p><strong>Автор:</strong> {{ recipe.author }}</p>
+    <p><strong>Категории:</strong>
+        {% for category in recipe.categories.all %}
+            {{ category.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+<!--    <p><strong>Путь к изображению:</strong> {{ recipe.img.url }}</p>-->
+    {% if recipe.img %}
+        <img src="{{ recipe.img.url }}" alt="{{ recipe.name }}" width="300">
+    {% else %}
+        <p>Изображение отсутствует</p>
+    {% endif %}
+{% endblock %}

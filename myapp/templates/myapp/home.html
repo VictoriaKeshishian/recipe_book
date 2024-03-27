@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Главная - Мой сайт с рецептами{% endblock %}
+
+{% block content %}
+    <h2>Случайные рецепты</h2>
+    <ul>
+        {% for recipe in recipes %}
+            <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.name }}</a></li>
+            <p>{{ recipe.description }}</p>
+        {% endfor %}
+    </ul>
+    <p>Еще не зарегистрированы? <a href="{% url 'registration' %}">Зарегистрируйтесь</a></p>
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'user_profile' %}">Мой профиль</a></p>
+    {% endif %}
+{% endblock %}
