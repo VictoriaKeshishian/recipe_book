@@ -7,4 +7,8 @@
     <p>Имя пользователя: {{ user.username }}</p>
 
     <a href="{% url 'user_recipes' %}">Мои рецепты</a>
+    <p></p>
+    <a href="{% url 'password_change' %}">Сменить пароль</a>
+    <p></p>
+    <a href="{% url 'change_username' %}">Сменить имя пользователя</a>
 {% endblock %}

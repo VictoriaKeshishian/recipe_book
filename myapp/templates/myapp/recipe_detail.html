@@ -6,11 +6,6 @@
     <h2>{{ recipe.name }}</h2>
     <p><strong>Описание:</strong> {{ recipe.description }}</p>
     <p><strong>Шаги приготовления:</strong></p>
-<!--    <ol>-->
-<!--        {% for step in recipe.cooking %}-->
-<!--            <li>{{ step }}</li>-->
-<!--        {% endfor %}-->
-<!--    </ol>-->
     <ol>
         {% for step in cooking_steps %}
             <li>{{ step }}</li>
@@ -24,7 +19,6 @@
             {{ category.name }}{% if not forloop.last %}, {% endif %}
         {% endfor %}
     </p>
-<!--    <p><strong>Путь к изображению:</strong> {{ recipe.img.url }}</p>-->
     {% if recipe.img %}
         <img src="{{ recipe.img.url }}" alt="{{ recipe.name }}" width="300">
     {% else %}

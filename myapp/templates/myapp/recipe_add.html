@@ -2,28 +2,12 @@
 
 {% block title %}Добавление рецепта - Мой сайт с рецептами{% endblock %}
 
+
 {% block content %}
     <h2>Добавление нового рецепта</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="name">Название рецепта:</label><br>
-        <input type="text" id="name" name="name"><br><br>
-
-        <label for="description">Описание:</label><br>
-        <textarea id="description" name="description"></textarea><br><br>
-
-        <label for="cooking">Шаги приготовления:</label><br>
-        <textarea id="cooking" name="cooking"></textarea><br><br>
-
-        <label for="time_cooking">Время приготовления:</label><br>
-        <input type="text" id="time_cooking" name="time_cooking"><br><br>
-
-        <label for="img">Изображение:</label><br>
-        <input type="file" id="img" name="img"><br><br>
-
-        <label for="ingredients">Ингредиенты:</label><br>
-        <textarea id="ingredients" name="ingredients"></textarea><br><br>
-
+        {{ form.as_p }}
         <input type="submit" value="Добавить">
     </form>
 {% endblock %}

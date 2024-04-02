@@ -1,32 +1,52 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Мой сайт с рецептами{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'myapp/css/materialize.min.css' %}" media="screen,projection"/>
 </head>
 <body>
+    <div class="text-container">
     <header>
-        <h1>Мой сайт с рецептами</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Главная</a></li>
-                <li><a href="{% url 'recipe_add' %}">Добавить рецепт</a></li>
-                <li><a href="{% url 'login' %}">Войти</a></li>
-                <li><a href="{% url 'logout' %}">Выйти</a></li>
-                <li><a href="{% url 'user_profile' %}">Мой профиль</a></li>
-            </ul>
-        </nav>
+            <h1>Мой сайт с рецептами</h1>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'recipe_add' %}">Добавить рецепт</a></li>
+                    <li><a href="{% url 'category_list' %}">Категории</a></li>
+                    <li><a href="{% url 'search_recipes' %}">Поиск по названию</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Выйти</a></li>
+                    <li><a href="{% url 'user_profile' %}">Мой профиль</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
     </header>
-
+        <div class="text-container">
     <main>
-        {% block content %}{% endblock %}
+         <div class="container">
+            {% block content %}{% endblock %}
+         </div>
     </main>
-
+    </div>
     <footer>
         &copy; {% now "Y" %} Мой сайт с рецептами
     </footer>
+
+    <script src="{% static 'myapp/js/footer_visibility.js' %}"></script>
+    <script type="text/javascript" src="{% static 'myapp/js/materialize.min.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems, {});
+        });
+    </script>
 </body>
 </html>

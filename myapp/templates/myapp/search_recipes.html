@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Поиск рецептов - Мой сайт с рецептами{% endblock %}
+
+{% block content %}
+    <h2>Поиск рецептов</h2>
+    <form method="GET">
+        {{ search_form.as_p }}
+        <button type="submit">Поиск</button>
+    </form>
+
+    {% if search_results %}
+        <h3>Результаты поиска</h3>
+        <ul>
+            {% for recipe in search_results %}
+                <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ничего не найдено.</p>
+    {% endif %}
+{% endblock %}

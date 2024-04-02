@@ -1,0 +1,165 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ede7f6; /* Нежно-фиолетовый цвет */
+    color: #000000; /* Черный цвет текста */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Arial Black", Arial, sans-serif;
+    font-weight: bold;
+    color: #343a40; /* Цвет заголовков */
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+a {
+    color: #007bff; /* Ссылки: синий цвет */
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Изменение цвета при наведении */
+}
+
+.container {
+    width: 100%; /* Ширина контейнера */
+    margin: 0; /* Центрирование контейнера по горизонтали */
+    padding: 0;
+}
+
+/* Стили для хедера */
+header {
+    background-color: #ef5350; /* Темно-кораловый цвет */
+    color: #ffffff; /* Белый цвет текста */
+    padding: 20px;
+    text-align: center; /* Выравнивание текста по центру */
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    background-color: #ff8a80; /* Нежно-фиолетовый цвет */
+    color: #ffffff; /* Белый цвет текста */
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff; /* Белый цвет текста */
+    text-decoration: none;
+}
+
+/* Стили для мейна */
+main {
+    padding: 20px;
+    background-color: #ffebee;
+    min-height: calc(100vh - 40px);/* Высота main равна 100% высоты видимой области минус высота header и footer */
+    width: 100%;
+}
+
+/* Стили для футера */
+footer {
+    position: fixed; /* Зафиксировать футер */
+    bottom: 0; /* Расположить футер внизу страницы */
+    width: 100%; /* Ширина футера на всю ширину страницы */
+    background-color: #424242;
+    color: #ffffff; /* Белый цвет текста */
+    padding: 20px;
+    text-align: center;
+    margin: 0; /* Убедитесь, что нет отступов */
+    border: 0; /* Убедитесь, что нет границ */
+}
+
+/* Дополнительные стили для рецептов */
+.recipe {
+    background-color: #ffffff; /* Белый цвет фона */
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.recipe p {
+    margin-bottom: 10px;
+}
+
+.recipe img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.recipe-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.recipe-details span {
+    font-size: 14px;
+    color: #6c757d; /* Серый цвет текста */
+}
+
+.recipe-details span i {
+    margin-right: 5px;
+}
+
+/* Сетка для рецептов */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.recipe-item {
+    text-align: center;
+}
+
+.recipe-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.recipe-item p {
+    margin: 10px 0;
+}
+
+
+body {
+    background-image: url('/static/myapp/images/background.jpg'); /* Путь к вашему фоновому изображению */
+    background-size: cover; /* Масштабирует изображение так, чтобы оно полностью покрывало задний план */
+    background-repeat: no-repeat; /* Запрещает повторять изображение на заднем плане */
+    opacity: 0.97;
+}
+
+.text-container {
+    background-color: rgba(255, 255, 255, 0.5); /* Пример полупрозрачного белого цвета для фона */
+    /*padding: 20px; /* Добавление отступов для улучшения читаемости */
+}

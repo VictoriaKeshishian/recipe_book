@@ -7,7 +7,7 @@ class Recipe(models.Model):
     description = models.TextField()
     cooking = models.TextField()
     time_cooking = models.CharField(max_length=50)
-    img = models.ImageField(upload_to='products/')
+    img = models.ImageField(upload_to='products/', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     ingredients = models.TextField()
     categories = models.ManyToManyField('Categories', related_name='recipes')
@@ -17,6 +17,9 @@ class Categories(models.Model):
     name = models.CharField(max_length=100)
     img = models.ImageField(upload_to='products/', blank=True, null=True)
     keywords = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 

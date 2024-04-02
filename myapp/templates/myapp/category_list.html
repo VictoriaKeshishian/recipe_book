@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Список категорий{% endblock %}
+
+{% block content %}
+    <h2>Список категорий</h2>
+    <div class="row">
+        {% for category in categories %}
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ category.img.url }}" alt="{{ category.name }}">
+                        <span class="card-title" style="background-color: rgba(0, 0, 0, 0.5); width: 100%; text-align: center;">{{ category.name }}</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'category_detail' category.id %}">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
