@@ -17,7 +17,7 @@ from django.db.models.functions import Lower
 
 def home(request):
     all_recipes = Recipe.objects.all()
-    random_recipes = random.sample(list(all_recipes), min(5, len(all_recipes)))
+    random_recipes = random.sample(list(all_recipes), min(6, len(all_recipes)))
     context = {'recipes': random_recipes}
     return render(request, 'myapp/home.html', context)
 
@@ -139,12 +139,17 @@ def recipe_add(request):
             recipe = form.save(commit=False)
             recipe.author = request.user
             recipe.save()
+            messages.success(request, "Рецепт успешно добавлен.")
             return redirect('home')
+        else:
+            messages.error(request, "Пожалуйста, заполните все обязательные поля и добавьте изображение.")
     else:
         form = RecipeForm()
-        messages.info(request, "Для добавления рецепта необходимо войти в свой профиль.")
-    return render(request, 'myapp/recipe_add.html', {'form': form})
 
+    if not request.user.is_authenticated:
+        messages.info(request, "Для добавления рецепта необходимо войти в свой профиль.")
+
+    return render(request, 'myapp/recipe_add.html', {'form': form})
 
 
 def search_recipes(request):

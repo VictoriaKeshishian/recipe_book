@@ -8,12 +8,14 @@
         {% for recipe in recipes %}
             <div class="col s12 m6 l4">
                 <div class="card">
-                    <div class="card-image" style="height: 130px; overflow: hidden;">
-                        <img src="{{ recipe.img.url }}" alt="{{ recipe.name }}" style="height: 100%;">
+                    <div class="card-image" style="height: 300px; overflow: hidden;">
+                        {% if recipe.img %}
+                            <img src="{{ recipe.img.url }}" alt="{{ recipe.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% endif %}
                         <span class="card-title" style="background-color: rgba(0, 0, 0, 0.5); width: 100%; text-align: center; padding: 5px; font-size: 16px;">{{ recipe.name }}</span>
                     </div>
                     <div class="card-content">
-                        <p>{{ recipe.description|truncatewords:5 }}</p> <!-- Отображение только первых 10 слов описания -->
+                        <p>{{ recipe.description|truncatewords:5 }}</p>
                     </div>
                     <div class="card-action">
                         <a href="{% url 'recipe_detail' recipe.id %}">Подробнее</a>

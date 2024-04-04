@@ -10,7 +10,6 @@ class RecipeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['img'].required = False
 
     def save(self, commit=True, user=None):
         instance = super().save(commit=False)
@@ -18,6 +17,16 @@ class RecipeForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+    def clean(self):
+        cleaned_data = super().clean()
+        img = cleaned_data.get("img")
+        name = cleaned_data.get("name")
+        description = cleaned_data.get("description")
+        ingredients = cleaned_data.get("ingredients")
+
+        if not (img and name and description and ingredients):
+            raise forms.ValidationError("Пожалуйста, заполните все обязательные поля и добавьте изображение.")
 
 
 class CategoriesForm(forms.Form):
